@@ -3,8 +3,7 @@ Generating configurable wilderness
 
 ## Requirements
 This project requires Lua 5.3. In Ubuntu:
-
-apt-get install liblua5.3-dev
+>apt-get install liblua5.3-dev
 
 ## Compiling with GCC
 >gcc -o generate_world generate_world.c -I/usr/include -llua5.3
@@ -17,6 +16,6 @@ To generate the world, run this in the terminal:
 >./generate_world
 
 ## Configure the world generator
-To configure the world generator, edit settings/terrain_settings.lua
+To configure the world generator, edit **settings/terrain_settings.lua**
 
 These settings are used in run-time. There is no need to recompile the code to experiment with different configuration settings.
