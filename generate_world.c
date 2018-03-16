@@ -39,12 +39,24 @@ int *drawMap(int value)
 }
 
 int map[1024][1024];
+int zone[1024][1024];
 
 static int setMap(lua_State *L) {
     int y = lua_tonumber(L, -3);
     int x = lua_tonumber(L, -2);
     int value = lua_tonumber(L, -1);
     map[y][x] = value;
+    
+    return 1;
+}
+
+static int setZone(lua_State *L) {
+    int y = lua_tonumber(L, -3);
+    int x = lua_tonumber(L, -2);
+    int value = lua_tonumber(L, -1);
+    zone[y][x] = value;
+    
+    //printf("setZone(%d, %d, %d)\n", y, x, value);
     
     return 1;
 }
@@ -70,6 +82,7 @@ lua_State *loadLuaFunction(char* filename, char* function_name)
 	
 	// Register C functions
 	lua_register(L, "setMap", setMap);
+	lua_register(L, "setZone", setZone);
 	
 	// Load but don't run the Lua script file
 	if (luaL_loadfile(L, filename))
@@ -87,15 +100,11 @@ lua_State *loadLuaFunction(char* filename, char* function_name)
 
 int main()
 {
-	//int x_size = 144;
-	//int y_size = 40;
-	
 	int x = 1;
 	int y = 1;
 	
+	// generate Lua terrain
 	lua_State *L = loadLuaFunction("settings/generators/generate_terrain.lua", "generate_terrain");
-	//lua_pushnumber(L, y_size);
-	//lua_pushnumber(L, x_size);
 	
 	// Run the loaded Lua script
 	if (lua_pcall(L, 0, 2, 0))
@@ -107,12 +116,41 @@ int main()
 	
 	lua_close(L);
 	
+	// generate Lua zones
+	lua_State *L2 = loadLuaFunction("settings/generators/generate_biomes.lua", "generate_biomes");
+	
+	// Run the loaded Lua script
+	if (lua_pcall(L2, 0, 0, 0))
+		bail(L, "lua_pcall() failed");
+	
+	lua_close(L2);
+
+	lua_State *L3 = loadLuaFunction("settings/generators/generate_ascii.lua", "generate_ascii");
+	
 	for (int y=0; y<y_size; y++) {
 		for (int x=0; x<x_size; x++) {
-			drawMap((int) map[y][x]);
+			//drawMap((int) map[y][x]);
+            lua_pushvalue(L3, 1);			
+            
+            //printf("zone: %d\n", zone[y][x]);
+			
+			lua_pushinteger(L3, (int) map[y][x]);
+			lua_pushinteger(L3, (int) zone[y][x]);
+			
+		    //printf("!\n");
+	        if (lua_pcall(L3, 2, 1, 0))
+		        bail(L3, "lua_pcall() failed 33");
+		    //printf("!!\n");
+		    
+	        const char *tile = lua_tostring(L3, -1);
+	        lua_pop(L3, 1);
+		    
+		    printf("%s", tile);
 		}
 		printf("\n");
 	}
+
+	lua_close(L3);
 	
 	printf("%slua map drawn!\n", C_NORMAL);
 	

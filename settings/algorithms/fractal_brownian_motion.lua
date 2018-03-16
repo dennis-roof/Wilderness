@@ -1,5 +1,15 @@
-function fractal_brownian_motion(num_iterations, x, y, persistence, scale, low, high)
-    require("settings.algorithms.simplex_noise_2d");
+function fractal_brownian_motion(num_iterations, x, y, persistence, scale, low, high, noise_function)
+    -- generate a random seed
+	math.randomseed( os.time() )
+	
+	-- flush random numbers
+	math.random()
+	math.random()
+	math.random()
+	
+	-- random x and y offset, required to randomize simplex noise height maps
+	local x_offset = math.random(255)
+	local y_offset = math.random(255)
     
 	local maxAmp = 0
 	local amp = 1
@@ -7,7 +17,7 @@ function fractal_brownian_motion(num_iterations, x, y, persistence, scale, low, 
 	local noise = 0
 	
 	for i=0, num_iterations, 1 do
-		noise = noise + (simplex_noise_2d(x*freq, y*freq, 0, 0) * amp)
+		noise = noise + (noise_function((x+x_offset)*freq, (y+y_offset)*freq, 0, 0) * amp)
 		maxAmp = maxAmp + amp
 		amp = amp * persistence
 		freq = freq * 2
