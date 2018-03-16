@@ -1,8 +1,8 @@
 function generate_ascii(height_value, zone)
     require("settings.biome_settings")
     
-    --print("use zone", zone)
-	
+	--zone = 5 -- for testing individual biomes
+    
     for key, biome in pairs(biome_settings.biomes[zone]) do
         --print(key, height_value, biome.minimum_height_value)
         if (
