@@ -2,7 +2,7 @@ require("settings.color_settings")
 
 biome_settings = {
     -- number of biome zones, maximum of 9
-    number_of_biomes = 6,
+    number_of_biomes = 7,
     
     -- biomes
     biomes = {
@@ -320,6 +320,73 @@ biome_settings = {
             },
             
             -- river
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 0,
+                color = color_settings.light_blue,
+                character = "~"
+            }
+        },
+        
+        -- biome 7 = taiga
+        {
+            -- mountain
+            {
+                encounter_percentage = 75,
+                minimum_height_value = 256/16*14,
+                color = color_settings.light_cyan,
+                character = "^"
+            },
+            
+            -- snow
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*13,
+                color = color_settings.white,
+                character = "*"
+            },
+            
+            -- forest
+            {
+                encounter_percentage = 25,
+                minimum_height_value = 256/16*10,
+                color = color_settings.orange,
+                character = "Y"
+            },
+            
+            -- forest
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*7,
+                color = color_settings.green,
+                character = "Y"
+            },
+            
+            -- stone
+            {
+                encounter_percentage = 45,
+                minimum_height_value = 256/16*5,
+                color = color_settings.silver,
+                character = ","
+            },
+            
+            -- earth
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*5,
+                color = color_settings.orange,
+                character = "."
+            },
+            
+            -- shallow water
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*4,
+                color = color_settings.cyan,
+                character = "~"
+            },
+            
+            -- deep water
             {
                 encounter_percentage = 100,
                 minimum_height_value = 0,
