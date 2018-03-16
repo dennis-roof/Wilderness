@@ -2,7 +2,7 @@ require("settings.color_settings")
 
 biome_settings = {
     -- number of biome zones, maximum of 9
-    number_of_biomes = 5,
+    number_of_biomes = 6,
     
     -- biomes
     biomes = {
@@ -20,7 +20,7 @@ biome_settings = {
             {
                 encounter_percentage = 100,
                 minimum_height_value = 256/8*6,
-                color = color_settings.grey,
+                color = color_settings.silver,
                 character = "^"
             },
             
@@ -95,7 +95,7 @@ biome_settings = {
             {
                 encounter_percentage = 100,
                 minimum_height_value = 256/16*2,
-                color = color_settings.grey,
+                color = color_settings.silver,
                 character = "."
             },
             
@@ -173,7 +173,7 @@ biome_settings = {
             {
                 encounter_percentage = 60,
                 minimum_height_value = 256/8*7,
-                color = color_settings.grey,
+                color = color_settings.silver,
                 character = "^"
             },
             
@@ -273,6 +273,57 @@ biome_settings = {
                 encounter_percentage = 100,
                 minimum_height_value = 0,
                 color = color_settings.blue,
+                character = "~"
+            }
+        },
+        
+        -- biome 6 = tundra
+        {
+            -- ice
+            {
+                encounter_percentage = 50,
+                minimum_height_value = 256/16*13,
+                color = color_settings.white,
+                character = "*"
+            },
+            
+            -- blue mountains
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*12,
+                color = color_settings.light_cyan,
+                character = "^"
+            },
+            
+            -- red grass
+            {
+                encounter_percentage = 45,
+                minimum_height_value = 256/16*7,
+                color = color_settings.light_red,
+                character = ","
+            },
+            
+            -- yellow grass
+            {
+                encounter_percentage = 45,
+                minimum_height_value = 256/16*3,
+                color = color_settings.yellow,
+                character = ","
+            },
+            
+            -- green grass
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 256/16*2,
+                color = color_settings.green,
+                character = ","
+            },
+            
+            -- river
+            {
+                encounter_percentage = 100,
+                minimum_height_value = 0,
+                color = color_settings.light_blue,
                 character = "~"
             }
         }

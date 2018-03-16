@@ -8,8 +8,9 @@ color_settings = {
     blue = "\x1B[34m",
     magenta = "\x1B[35m",
     cyan = "\x1B[36m",
-    grey = "\x1B[37m",
+    silver = "\x1B[37m",
 
+    grey = "\x1B[90m",
     light_red = "\x1B[91m",
     light_green = "\x1B[92m",
     yellow = "\x1B[93m",
