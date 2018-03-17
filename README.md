@@ -1,17 +1,17 @@
 # Wilderness
 Generating configurable wilderness.
 
+## Example wilderness
+ASCII symbols and colors represent the wilderness. Like water (~), ground (. and ,), mountains (^) and snow (*).
+
+![Screenshot](/doc/images/example.jpg)
+
 ## How does it work
 Using a multiple iterated Simplex Noise algorithm, a 2D height map with number values is generated. The numbers range from low ground 0 to high ground 255.
 
 Also a voronoi diagram is generated to create multiple zones on the map. Each zone will have its own ruleset on how to interpret the height map values within that zone.
 
 Each zone will convert values beneath a threshold as water, values above a threshold as mountains and everything in between as vegetation.
-
-## Example wilderness
-ASCII symbols and colors represent the wilderness. Like water (~), ground (. and ,), mountains (^) and snow (*).
-
-[alt text](https://github.com/dennis-roof/Wilderness/raw/master/example.jpg)
 
 ## Requirements
 This project requires GCC and Lua 5.3. To install the dev libraries in Ubuntu, run this in the terminal:
