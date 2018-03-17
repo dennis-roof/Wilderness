@@ -11,7 +11,7 @@ Each zone will convert values beneath a threshold as water, values above a thres
 ## Example wilderness
 ASCII symbols and colors represent the wilderness. Like water (~), ground (. and ,), mountains (^) and snow (*).
 
-[alt text](https://raw.githubusercontent.com/dennis-roof/Wilderness/example.jpg)
+[alt text](https://github.com/dennis-roof/Wilderness/raw/master/example.jpg)
 
 ## Requirements
 This project requires GCC and Lua 5.3. To install the dev libraries in Ubuntu, run this in the terminal:
